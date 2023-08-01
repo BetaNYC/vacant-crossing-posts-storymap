@@ -1,43 +1,52 @@
 const coordinates = [];
 // 40.84918851833160,-73.93112997900160
+
+function getCrashesWithin500ft(crossingFeature, crashesFC) {
+  const buffered = turf.buffer(turf.point(crossingFeature.coordinates),
+   80, {
+    units: "meters",
+  });
+  return crashesFC.filter((feature) => {
+    return turf.booleanIntersects(buffered, feature);
+  });
+}
+
 d3.json("./data/crashes.geojson").then((data) => {
-  // console.log(data.features);
-  data.features = data.features.filter(
-    (d) => d.geometry.coordinates[0] !== undefined
-  );
-  data.features = data.features.filter(
-    (d) => d.geometry.coordinates[1] > 40.8491885183316
+  const features = data.features.filter(
+    (d) =>
+      d.geometry.coordinates[0] !== undefined &&
+      d.geometry.coordinates[1] > 40.8491885183316
   );
 
-  data.features.forEach((d) => {
-    coordinates.push(d.geometry.coordinates);
-  });
+  //deep copy
+  const featureCopy = JSON.parse(JSON.stringify(features));
 
-  // const unqie = [[coordinates[0][0],coordinates[0][1]]]
+  const uniqueCoordinates = featureCopy.reduce((uniqueCoordinates, feature) => {
+    const key = feature.geometry.coordinates.map((i) => i.toFixed(4)).join(",");
+    if (!(key in uniqueCoordinates)) {
+      uniqueCoordinates[key] = [];
+    }
+    uniqueCoordinates[key].push(feature);
 
-  // uniq = function (items, key) {
-  //   var set = {};
-  //   return items.filter(function (item) {
-  //     var k = key ? key.apply(item) : item;
-  //     return k in set ? false : (set[k] = true);
-  //   });
-  // };
+    return uniqueCoordinates;
+  }, {});
 
-  // unique = uniq(coordinates, [].join)
+  const stackedCrashes = Object.keys(uniqueCoordinates).reduce(
+    (collection, key) => {
+      const features = uniqueCoordinates[key].map((feature, i) => {
+        feature.geometry.coordinates = key.split(",").map((i) => Number(i));
 
-  // console.log(unique);
+        //stack points
+        feature.geometry.coordinates[1] += i * 0.00002;
+        return feature;
+      });
 
-  function keyFor(item) {
-    return item.geometry.coordinates[0] + ":" + item.geometry.coordinates[1];
-  }
-  let indexed = {};
-  data.features.forEach(function (item) {
-    indexed[keyFor(item)] = item;
-  });
-  let uniqueCoordinatesData = Object.keys(indexed).map(function (k) {
-    return indexed[k];
-  });
-  console.log(uniqueCoordinatesData);
+      return [...collection, ...features];
+    },
+    []
+  );
+
+  console.log(stackedCrashes);
 
   mapboxgl.accessToken =
     "pk.eyJ1IjoiY2xvdWRsdW4iLCJhIjoiY2s3ZWl4b3V1MDlkejNkb2JpZmtmbHp4ZiJ9.MbJU7PCa2LWBk9mENFkgxw";
@@ -50,7 +59,7 @@ d3.json("./data/crashes.geojson").then((data) => {
     interactive: true,
   });
 
-  const dot = []
+  const dot = [];
 
   // for (let i = 0; i < data.features.length; i++) {
   //   let count = 0;
@@ -76,7 +85,6 @@ d3.json("./data/crashes.geojson").then((data) => {
   //   }
   // }
 
-
   console.log(data.features.length);
   console.log(dot.length);
 
@@ -93,7 +101,10 @@ d3.json("./data/crashes.geojson").then((data) => {
 
     map.addSource("crashes", {
       type: "geojson",
-      data: data
+      data: {
+        type: "FeatureCollection",
+        features: stackedCrashes,
+      },
     });
 
     map.loadImage("./icons/cross.png", (error, image) => {
@@ -142,6 +153,13 @@ d3.json("./data/crashes.geojson").then((data) => {
         // "icon-halo-color": "#fff",
         // "icon-halo-width": 2
       },
+    });
+
+    map.on("click", "vacant_guards", (e) => {
+      const guards = e.features[0];
+      const crashes = getCrashesWithin500ft(guards.geometry, features);
+
+      console.log(crashes);
     });
 
     map.addLayer({
