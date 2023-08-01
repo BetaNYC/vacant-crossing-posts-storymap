@@ -1,0 +1,87 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#map {
+  position: absolute;
+  /* border: 1px solid orange; */
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+#legends {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  width: 250px;
+  height: 100px;
+  background-color: rgba(191, 191, 191, 0.5);
+  z-index: 2;
+}
+
+#storyline {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  padding: 12px;
+  width: 500px;
+  height: 400px;
+  background-color: rgba(191, 191, 191, 1);
+  z-index: 2;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot_morning {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #f9c69d;
+  border-radius: 50%;
+}
+
+.dot_afternoon {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #f48e3b;
+  border-radius: 50%;
+}
+
+.square_school {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: green;
+}
+
+.cross_vacant {
+  width: 15px;
+  height: 15px;
+  color: red;
+}
+
+.marker {
+  display: block;
+  width: 9px;
+  height: 9px;
+  background-color: #f48e3b;
+  border: 0.1px solid white;
+  border-radius: 50%;
+}

@@ -1,0 +1,551 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92151637221868,40.865540816774484 ]
+    },
+    "properties": {
+    "POST #":"01/B",
+    "SCHOOL NAME":"Washington Heights Academy",
+    "RANK":"SCG I",
+    "LAST NAME":"HERNANDEZ",
+    "FIRST NAME":"MERES",
+    "TAX #":"386967",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 204th STREET",
+    "STREET NAME 2":"SHERMAN AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.91144388657904,40.87209631168033 ]
+    },
+    "properties": {
+    "POST #":"25/A",
+    "SCHOOL NAME":"P.S. 018 Park Terrace",
+    "RANK":"SCG I",
+    "LAST NAME":"ESPINOSA",
+    "FIRST NAME":"ELIDA",
+    "TAX #":"389797",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 218th STREET",
+    "STREET NAME 2":"BROADWAY",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.91223978940742,40.8716693554154]
+    },
+    "properties": {
+    "POST #":"23/A",
+    "SCHOOL NAME":"Paula Hedbavny School",
+    "RANK":"SCG I",
+    "LAST NAME":"TORRES",
+    "FIRST NAME":"CLAUDIA",
+    "TAX #":"391130",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"ELLWOOD STREET",
+    "STREET NAME 2":"BOGARDUS PL.",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -73.92240354766083,40.85903505778391 ]
+    },
+    "properties": {
+    "POST #":"12/A",
+    "SCHOOL NAME":"P.S. 005 Ellen Lurie",
+    "RANK":"SCG I",
+    "LAST NAME":"BAUTISTA",
+    "FIRST NAME":"IRANICE",
+    "TAX #":"389719",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"TENTH AVENUE",
+    "STREET NAME 2":"DYCKMAN STREET",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92240354766083,40.85903505778391]
+    },
+    "properties": {
+    "POST #":"21/B",
+    "SCHOOL NAME":"P.S. 005 Ellen Lurie",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"TENTH AVENUE",
+    "STREET NAME 2":"DYCKMAN STREET",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92379277221876,40.86676244159841]
+    },
+    "properties": {
+    "POST #":"24/B",
+    "SCHOOL NAME":"Amistad Dual Language School",
+    "RANK":"SCG I",
+    "LAST NAME":"PEREZ",
+    "FIRST NAME":"MILEDYS",
+    "TAX #":"387766",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 204th  STREET",
+    "STREET NAME 2":"BROADWAY",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.93359988571318,40.85349151956065 ]
+    },
+    "properties": {
+    "POST #":"11/A",
+    "SCHOOL NAME":"P.S.048 Michael J. Buczek",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 187nd STREET",
+    "STREET NAME 2":"BROADWAY",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ -73.93419532193865,40.85083810442382 ]
+    },
+    "properties": {
+    "POST #":"15/A",
+    "SCHOOL NAME":"P.S. 132 Juan Pablo Duarte",
+    "RANK":"SCG I",
+    "LAST NAME":"DIAZ",
+    "FIRST NAME":"GLERYS",
+    "TAX #":"391564",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 182nd STREET",
+    "STREET NAME 2":"WADSWORTH AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92825288940796,40.859535174593596 ]
+    },
+    "properties": {
+    "POST #":"16/B",
+    "SCHOOL NAME":"Professor Juan Bosch Public School",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W.219th STREET",
+    "STREET NAME 2":"BROADWAY",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92238208999012,40.85904317223155 ]
+    },
+    "properties": {
+    "POST #":"05/A",
+    "SCHOOL NAME":"P.S. 005 Ellen Lurie",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"DYCKMAN STREET",
+    "STREET NAME 2":"NAGLE AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.91213250105379,40.87165312961297]
+    },
+    "properties": {
+    "POST #":"17/A",
+    "SCHOOL NAME":"Paula Hedbavny School",
+    "RANK":"SCG I",
+    "LAST NAME":"SANCHEZ",
+    "FIRST NAME":"JOCELYN",
+    "TAX #":"391810",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 218th STREET",
+    "STREET NAME 2":"BROADWAY",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92313607776124,40.86462128131116 ]
+    },
+    "properties": {
+    "POST #":"18/A",
+    "SCHOOL NAME":"The Equity Project Charter School (TEP)",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 193rd STREET",
+    "STREET NAME 2":"SAINT NICHOLAS AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.9279133722193,40.85351255919604 ]
+    },
+    "properties": {
+    "POST #":"07/A",
+    "SCHOOL NAME":"P.S. 189",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 189th STREET",
+    "STREET NAME 2":"AUDUBON AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.9279133722193,40.85351255919604 ]
+    },
+    "properties": {
+    "POST #":"08/A",
+    "SCHOOL NAME":"P.S. 189",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 188th STREET",
+    "STREET NAME 2":"AUDUBON AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.93179122729795,40.85344913315278 ]
+    },
+    "properties": {
+    "POST #":"22/A",
+    "SCHOOL NAME":"Saint Elizabeth",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 187th STREET",
+    "STREET NAME 2":"WADSWORTH AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.93179122729795,40.85344913315278 ]
+    },
+    "properties": {
+    "POST #":"13/B",
+    "SCHOOL NAME":"Saint Elizabeth",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 187th STREET",
+    "STREET NAME 2":"SAINT NICHOLAS AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.91799411840287,40.863655322620374]
+    },
+    "properties": {
+    "POST #":"20/A",
+    "SCHOOL NAME":"Manhattan Bible",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 204th STREET",
+    "STREET NAME 2":"TENTH AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.93313797377374,40.85138213586596 ]
+    },
+    "properties": {
+    "POST #":"14/A",
+    "SCHOOL NAME":"Fort Tryon Educational Complex",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 183rd STREET",
+    "STREET NAME 2":"SAINT NICHOLAS AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92064435348009,40.86929935047123 ]
+    },
+    "properties": {
+    "POST #":"03/A",
+    "SCHOOL NAME":"Good Shepard",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"ISHAM STREET",
+    "STREET NAME 2":"VERMILYEA AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92064435348009,40.86929935047123 ]
+    },
+    "properties": {
+    "POST #":"N/A",
+    "SCHOOL NAME":"Good Shepard",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"ISHAM STREET",
+    "STREET NAME 2":"BROADWAY",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.93534885079713,40.857978854549856 ]
+    },
+    "properties": {
+    "POST #":"26/B",
+    "SCHOOL NAME":"Succes Academy",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 190th STREET",
+    "STREET NAME 2":"FORT WASHINGTON AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92768963482824,40.86037724073122 ]
+    },
+    "properties": {
+    "POST #":"10/A ",
+    "SCHOOL NAME":"P.S. 152   Dyckman Valley",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"ELLWOOD  STREET",
+    "STREET NAME 2":"NAGLE AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.93701694523126,40.85628301169591 ]
+    },
+    "properties": {
+    "POST #":"19/A",
+    "SCHOOL NAME":"P.S./I.S. 187 Hudson Cliffs",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 187th STREET",
+    "STREET NAME 2":"FORT WASHINGTON AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.92800037406631,40.86373694901237 ]
+    },
+    "properties": {
+    "POST #":"09/A",
+    "SCHOOL NAME":"Queen Of Martyrs",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"SHERMAN AVENUE",
+    "STREET NAME 2":"ARDEN AVENUE ",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.93112997900162,40.84918851833159 ]
+    },
+    "properties": {
+    "POST #":"02/A",
+    "SCHOOL NAME":"WHEELS ACADEMY",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"W. 182nd STREET",
+    "STREET NAME 2":"AUDUBON AVENUE",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [  -73.91762511639543,40.86807815865544 ]
+    },
+    "properties": {
+    "POST #":"04/A",
+    "SCHOOL NAME":"P.S.098 Shorac Kappock",
+    "RANK":"SCG I",
+    "LAST NAME":"VACANT",
+    "FIRST NAME":"VACANT",
+    "TAX #":"N/A",
+    "COMMAND CODE":34,
+    "BOROUGH":"PBMN",
+    "STREET NAME 1":"WEST 212 STREET",
+    "STREET NAME 2":"BROADWAY",
+    "AM HOURS":"0730-1000",
+    "PM HOURS":"1330-1600"
+    }
+  }
+]
+}
