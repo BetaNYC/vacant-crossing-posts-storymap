@@ -7,10 +7,10 @@ import * as turf from "@turf/turf";
 
 import "./Map.css";
 
-import crashes from "../..//Data/Crashes_2020.geojson";
-import schools from "../../Data/bbls_with_schools.geojson";
-import schoolsLabel from "../../Data/schools_studyarea.geojson";
-import schoolsAreas from "../../Data/bbls_with_schools.geojson";
+import crashes from "../../Data/Crashes_2020.geo.json";
+import schools from "../../Data/bbls_with_schools.geo.json";
+import schoolsLabel from "../../Data/schools_studyarea.geo.json";
+import schoolsAreas from "../../Data/bbls_with_schools.geo.json";
 
 import square from "../../icons/square.png";
 import hand from "../../icons/hand.png";
@@ -49,7 +49,7 @@ const Map = () => {
     });
 
     m.on("load", async () => {
-      const crash_features = (await d3.json(crashes)).features.filter(
+      const crash_features = crashes.features.filter(
         (d) =>
           d.properties.hour > 7 &&
           d.properties.hour < 16 &&
@@ -62,7 +62,7 @@ const Map = () => {
 
       const stackedCrashes = getStackCrashes(crash_features);
 
-      const schoolArea_features = (await d3.json(schoolsAreas)).features.filter(
+      const schoolArea_features = schoolsAreas.features.filter(
         (d) =>
           // d.geometry.coordinates[0][0][0][0] < -73.917 &&
           d.geometry.coordinates[0][0][0][1] > 40.8491885183316 &&
@@ -189,17 +189,17 @@ const Map = () => {
         },
       });
 
-      m.addLayer({
-        id: "school_area",
-        type: "fill",
-        source: "schools",
-        layout: {},
-        paint: {
-          "fill-color": "transparent",
-          "fill-opacity": 0,
-          "fill-outline-color": "#e5f2e5",
-        },
-      });
+      // m.addLayer({
+      //   id: "school_area",
+      //   type: "fill",
+      //   source: "schools",
+      //   layout: {},
+      //   paint: {
+      //     "fill-color": "transparent",
+      //     "fill-opacity": 0,
+      //     "fill-outline-color": "#e5f2e5",
+      //   },
+      // });
 
       m.addLayer({
         id: "outline",

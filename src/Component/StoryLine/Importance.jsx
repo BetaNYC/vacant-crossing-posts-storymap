@@ -1,43 +1,26 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
-import crashes from "../../Data/crashes.geojson";
+import crashes from "../../Data/crashes.geo.json";
 
 const Importance = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    const svg = d3.select(ref.current);
     const height = ref.current.clientHeight;
     const width = ref.current.clientWidth;
 
-    d3.json(crashes).then((data) => {
-      const features = data.features.filter(
+ 
+      const features = crashes.features.filter(
         (d) =>
           d.geometry.coordinates[0] !== undefined &&
           d.geometry.coordinates[1] > 40.8491885183316
       );
-      const hours = [];
-      features.forEach((c) => hours.push(c.properties.hour));
 
-      //   const moring = hours.filter((h) => h >= 7 && h <= 10);
-      //   const afternoon = hours.filter((h) => h >= 13 && h <= 16);
-
-      let hourData = [];
-      for (let i = 0; i < 24; i++) {
-        hourData.push({
-          hour: i,
-          value: 0,
-        });
-      }
-
-      hours.forEach((h, i) => {
-        hourData.map((d, j) => {
-          if (h === d.hour) {
-            d.value++;
-          }
-        });
-      });
+      // creates an array of objects that has the count of crashes during that hour
+      const hourData = [...Array(24).keys()].map(hour => {
+        return {hour, value: features.filter(d=> d.properties.hour === hour).length}
+      })
 
       let svg = d3
         .select(ref.current)
@@ -83,8 +66,6 @@ const Importance = () => {
             ? 1
             : 0.05
         );
-
-    });
   });
 
   return (

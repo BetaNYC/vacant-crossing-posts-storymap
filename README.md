@@ -1,11 +1,8 @@
-# Crossing Guards
+# React + Vite
 
-## Next steps
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-1. fill the icons of guards
-2. Styling and UX
-2a. Add the school
-2b. show the buffer when crossing guard is clicked
-3. storytelling interactive features
-3a. Migrate all charts over to React (make layer hide and show based on context)
-3b. Work on the story
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
