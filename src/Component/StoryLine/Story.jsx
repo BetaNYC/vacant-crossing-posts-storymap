@@ -15,11 +15,9 @@ const Story = () => {
 
   //wait for most layers to load
   if (map && map.getSource("guards")) {
-
-
     const onStepEnter = (data) => {
       setCurrentStepIndex(data);
-      console.log(map)
+
       if (data.data > 1) {
         map.getSource("guards").setData(guards);
         map.setPaintProperty("guards_vacant", "icon-opacity", [
