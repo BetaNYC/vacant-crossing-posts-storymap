@@ -10,6 +10,7 @@ import "./Map.css";
 import crashes from "../..//Data/Crashes_2020.geojson";
 import schools from "../../Data/bbls_with_schools.geojson";
 import schoolsLabel from "../../Data/schools_studyarea.geojson";
+import schoolsAreas from "../../Data/bbls_with_schools.geojson";
 
 import square from "../../icons/square.png";
 import hand from "../../icons/hand.png";
@@ -61,9 +62,21 @@ const Map = () => {
 
       const stackedCrashes = getStackCrashes(crash_features);
 
-      m.addSource("schools", {
+      const schoolArea_features = (await d3.json(schoolsAreas)).features.filter(
+        (d) =>
+          // d.geometry.coordinates[0][0][0][0] < -73.917 &&
+          d.geometry.coordinates[0][0][0][1] > 40.8491885183316 &&
+          d.geometry.coordinates[0][0][0][1] < 40.875161
+      );
+
+      console.log(schoolArea_features);
+
+      m.addSource("school_areas", {
         type: "geojson",
-        data: schools,
+        data: {
+          type: "FeatureCollection",
+          features: schoolArea_features,
+        },
       });
 
       m.addSource("guards", {
@@ -110,12 +123,23 @@ const Map = () => {
       });
 
       m.addLayer({
+        id: "school_areas",
+        type: "fill",
+        source: "school_areas",
+        layout: {},
+        paint: {
+          "fill-color": "#7cc592", // blue color fill
+          "fill-opacity": 0.25,
+        },
+      });
+
+      m.addLayer({
         id: "guards_vacant",
         type: "symbol",
         source: "guards",
         layout: {
           "icon-image": "icon_hand",
-          "icon-size": 0.08,
+          "icon-size": 0.07,
           "icon-allow-overlap": true,
         },
         paint: {
@@ -130,7 +154,7 @@ const Map = () => {
         source: "guards",
         layout: {
           "icon-image": "icon_hand_filled",
-          "icon-size": 0.15,
+          "icon-size": 0.14,
           "icon-allow-overlap": false,
         },
         paint: {
@@ -281,7 +305,7 @@ const Map = () => {
           .attr("x", (d) => x(d.time) + x.bandwidth() / 2 - 6)
           .attr("y", (d) => y(d.count) - 4)
           .text((d) => d.count)
-          .style('fill', 'white')
+          .style("fill", "white");
 
         // m.removeLayer("schools")
         // m.removeSource("guards")
