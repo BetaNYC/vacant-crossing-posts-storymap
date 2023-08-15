@@ -12,7 +12,7 @@ const Problems = () => {
       vacant: 19,
       guards: 8,
     };
-    const color = d3.scaleOrdinal().range(["#fdeca6", "#e5e5e5"]);
+    const color = d3.scaleOrdinal().range(["#e5e5e5", "#fdeca6"]);
 
     const radius = Math.min(width, height) / 2;
 
@@ -33,7 +33,7 @@ const Problems = () => {
       .attr("fill", (d) => color(d.data[1]))
       .attr("stroke", "black")
       .style("stroke-width", "0px")
-      .style("opacity", (d) => (d.data[1] === 19 ? 0.25 : 0.05))
+      .style("opacity", (d) => (d.data[1] === 19 ? 0.05 : 0.25))
       .attr("transform", `translate(${width / 2},${height / 2})`);
   });
 
@@ -43,10 +43,10 @@ const Problems = () => {
       <div className="mt-[10px] text-[16px]">
         Knowing that crossing guards are crucial to keep passengers safe.
         However, 18 intersections near school should have guards are vacant.{" "}
-        <span className="font-bold text-[#fdeca6]">Vacant guards</span> account
-        for{" "}
+        <span className="font-bold text-[#fdeca6]">Filled guards</span> only
+        account for{" "}
         <span className="font-bold text-[16px] text-[#fdeca6]">
-          {((19 / 27) * 100).toFixed(0)}%{" "}
+          {((8 / 27) * 100).toFixed(0)}%{" "}
         </span>
         of Total Positions. This makes students exposure on the road danger
         without any protection.

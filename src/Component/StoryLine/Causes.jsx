@@ -18,7 +18,7 @@ const Causes = () => {
       </div>
       <div className="mt-[10px] text-[16px]">
         <span>Since 2020 There were</span>
-        <span className="font-bold text-[18px] text-[#fdeca6]"> 51 </span>
+        <span className="font-bold text-[18px]"> 51 </span>
         crashes during <span className="font-bold text-[#ffd4d2]">
           morning
         </span>{" "}
