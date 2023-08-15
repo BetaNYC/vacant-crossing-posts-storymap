@@ -62,23 +62,6 @@ const Map = () => {
 
       const stackedCrashes = getStackCrashes(crash_features);
 
-      const schoolArea_features = schoolsAreas.features.filter(
-        (d) =>
-          // d.geometry.coordinates[0][0][0][0] < -73.917 &&
-          d.geometry.coordinates[0][0][0][1] > 40.8491885183316 &&
-          d.geometry.coordinates[0][0][0][1] < 40.875161
-      );
-
-      console.log(schoolArea_features);
-
-      m.addSource("school_areas", {
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: schoolArea_features,
-        },
-      });
-
       m.addSource("guards", {
         type: "geojson",
         data: {
@@ -120,17 +103,6 @@ const Map = () => {
       m.loadImage(handFilled, (error, image) => {
         if (error) throw error;
         m.addImage("icon_hand_filled", image);
-      });
-
-      m.addLayer({
-        id: "school_areas",
-        type: "fill",
-        source: "school_areas",
-        layout: {},
-        paint: {
-          "fill-color": "#7cc592", // blue color fill
-          "fill-opacity": 0.25,
-        },
       });
 
       m.addLayer({
@@ -328,8 +300,8 @@ const Map = () => {
 
     //deconstruction
     return () => {
-      m.remove()
-    }
+      m.remove();
+    };
   }, []);
 
   return <div className="fixed w-[100vw] h-[100vh] " ref={mapContainer}></div>;
