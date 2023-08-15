@@ -38,6 +38,12 @@ const Story = () => {
         1,
       ]);
     }
+    if (data.data === 3) {
+      map.flyTo({
+        center: [-73.927, 40.862],
+        zoom: 14,
+      });
+    }
   };
 
   return (
