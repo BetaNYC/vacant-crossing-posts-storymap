@@ -7,7 +7,7 @@ import * as turf from "@turf/turf";
 
 import "./Map.css";
 
-import crashes from "../../Data/Crashes_2020.geo.json";
+import crashes from "../../Data/crashes_2020.geo.json";
 
 import handEmpty from "../../icons/hand_empty.png";
 import handFilled from "../../icons/hand_filled.png";
@@ -216,7 +216,6 @@ const Map = () => {
         }, []);
 
         let clickedCoordinates = coordinates.slice();
-        console.log(properties);
         let content = `<div class="content">
                           <h4>Post ${properties["POST #"]} is ${
           properties["LAST NAME"] === "VACANT"

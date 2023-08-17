@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
-import crashes from "../../Data/crashes.geo.json";
+import crashes from "../../data/crashes_2020.geo.json";
 
 const Importance = () => {
   const ref = useRef(null);
@@ -43,7 +43,7 @@ const Importance = () => {
       .select(".domain")
       .remove();
 
-    const y = d3.scaleLinear().domain([0, 50]).range([height, 0]);
+    const y = d3.scaleLinear().domain([0, 100]).range([height, 0]);
 
     svg
       .selectAll("bars")
@@ -68,6 +68,10 @@ const Importance = () => {
           ? 1
           : 0.05
       );
+
+      console.log(hourData)
+      
+
   });
 
   return (
@@ -79,7 +83,7 @@ const Importance = () => {
         <p>
           Students are facing significant risks during their commutes.&nbsp;
           <span className="font-bold text-[18px]">
-             {((220 / 625) * 100).toFixed(0)}%
+            {((220 / 625) * 100).toFixed(0)}%
           </span>{" "}
           crashes occur during school drop off and pick times.{" "}
         </p>
@@ -88,11 +92,11 @@ const Importance = () => {
       <div className="mt-[10px] text-[16px]">
         <p>
           Morning Shift (7-10):{" "}
-          <span className="font-bold text-[18px] text-[#ffd4d2]"> 101</span>
+          <span className="font-bold text-[18px] text-[#ffd4d2]"> 197</span>
         </p>
         <p>
           Afternoon Shift (13-16):{" "}
-          <span className="font-bold text-[18px] text-[#ff727c]"> 190</span>
+          <span className="font-bold text-[18px] text-[#ff727c]"> 316</span>
         </p>
       </div>
       <svg className="m-auto w-[350px] h-[300px]" ref={ref}></svg>
