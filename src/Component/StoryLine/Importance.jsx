@@ -71,20 +71,17 @@ const Importance = () => {
   return (
     <div className="my-[calc(100vh)] p-[25px] bg-[rgba(0,0,0,0.5)]">
       <div className="font-bold text-[20px]">
-       1. Crossing Guards are Important
+       1. Crossing guards are important ... (why?? what do they do) 
       </div>
       <div className="mt-[10px] text-[16px]">
-        Crash Cases from 2022 <br /> Morning Gruading Hours (7-10):{" "}
-        <span className="font-bold text-[18px] text-[#ffd4d2]"> 101</span>
-        <br />
-        Afternoon Gruading Hours (13-16):{" "}
-        <span className="font-bold text-[18px] text-[#ff727c]"> 190</span>
-        <br />
-        Percentage of Total:
-        <span className="font-bold text-[18px]">
-          {" "}
-          {((220 / 625) * 100).toFixed(0)}%
-        </span>
+        <p><span className="font-bold text-[18px]">{((220 / 625) * 100).toFixed(0)}%</span> crashes occur during school drop off and pick times. </p>
+         {/* <p>add pictures</p> */}
+      </div>
+      <div className="mt-[10px] text-[16px]">
+        <p>Morning Shift (7-10):{" "}
+        <span className="font-bold text-[18px] text-[#ffd4d2]"> 101</span></p>
+        <p>Afternoon Shift (13-16):{" "}
+        <span className="font-bold text-[18px] text-[#ff727c]"> 190</span></p>
       </div>
       <svg className="m-auto w-[350px] h-[300px]" ref={ref}></svg>
     </div>

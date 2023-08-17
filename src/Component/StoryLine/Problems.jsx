@@ -41,17 +41,17 @@ const Problems = () => {
     <div className="my-[calc(100vh)] p-[25px] max-w-[400px] bg-[rgba(0,0,0,0.5)]">
       <div className="font-bold text-[20px]">2. Crossing Guards Shortage</div>
       <div className="mt-[10px] text-[16px]">
-        Knowing that crossing guards are crucial to keep passengers safe.
-        However, 18 intersections near school should have guards are vacant.{" "}
+        Crossing guards are crucial to keep passengers safe.
+        However, 18 intersections near schools have vacancies.{" "}
         <span className="font-bold text-[#fdeca6]">Filled guards</span> only
         account for{" "}
         <span className="font-bold text-[16px] text-[#fdeca6]">
           {((8 / 27) * 100).toFixed(0)}%{" "}
         </span>
-        of Total Positions. This makes students exposure on the road danger
-        without any protection.
+        of Total posts.
       </div>
       <svg className="mt-[20px] w-[300px] h-[300px]" ref={ref}></svg>
+      <p className="my-4 text-sm">🖰 Click on a hand icon for more details at that intersection.</p>
     </div>
   );
 };

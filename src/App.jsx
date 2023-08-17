@@ -1,7 +1,7 @@
-import react, { useState, createContext } from "react";
+import { useState, createContext } from "react";
 
 import Map from "./Component/Map/Map";
-import Legend from "./Component/Map/Legend";
+// import Legend from "./Component/Map/Legend";
 import Story from "./Component/StoryLine/Story";
 import HourSelect from "./Component/Map/TimeSelect";
 

@@ -8,15 +8,25 @@ import * as turf from "@turf/turf";
 import "./Map.css";
 
 import crashes from "../../Data/Crashes_2020.geo.json";
-import schools from "../../Data/bbls_with_schools.geo.json";
-import schoolsLabel from "../../Data/schools_studyarea.geo.json";
-import schoolsAreas from "../../Data/bbls_with_schools.geo.json";
 
 import square from "../../icons/square.png";
 import hand from "../../icons/hand.png";
 import handFilled from "../../icons/hand_filled_yellow.png";
 
 import { getStackCrashes } from "./getStackCrashes";
+
+function getCrashesWithinMeters(crossingFeature, crashesFC, meter = 80) {
+  const buffered = turf.buffer(
+    turf.point(crossingFeature.coordinates),
+    meter,
+    {
+      units: "meters",
+    }
+  );
+  return crashesFC.filter((feature) => {
+    return turf.booleanIntersects(buffered, feature);
+  });
+}
 
 const Map = () => {
   const { map, setMap, setCrashes } = useContext(MapContext);
@@ -89,14 +99,14 @@ const Map = () => {
       m.loadImage(square, (error, image) => {
         if (error) throw error;
         m.addImage("icon_square", image, {
-          sdf: "true",
+          sdf: true,
         });
       });
 
       m.loadImage(hand, (error, image) => {
         if (error) throw error;
         m.addImage("icon_hand", image, {
-          sdf: "true",
+          sdf: true,
         });
       });
 
@@ -188,8 +198,22 @@ const Map = () => {
       });
 
       m.on("click", "guards", (e) => {
-        const guards = e.features[0];
-        const crashes = getCrashesWithin500ft(guards.geometry, crash_features);
+
+
+        const { geometry, properties } = e.features[0];
+        let { coordinates } = geometry
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        const crashes = getCrashesWithinMeters(geometry, crash_features, 80);
+
+        // get count of crashes for morning and afternoon
+        // TODO - Refactor to a reduce function
         const hours = [];
 
         crashes.forEach((c) => hours.push(c.properties.hour));
@@ -203,39 +227,46 @@ const Map = () => {
           h >= 7 && h <= 10 ? data[0].count++ : data[1].count++;
         });
 
-        // let data = hours.reduce((value, value2) => {
-        //   return value[value2] ? ++value[value2] : (value[value2] = 1), value;
-        // }, {});
+        let clickedCoordinates = coordinates.slice();
+        console.log(properties)
+        let content = `<div class="content">
+                          <h4>Post ${properties['POST #']} is ${properties['LAST NAME'] === 'VACANT'? '<span class="vacant">Vacant</span>' : 'Staffed'}</h4>
+                          <span style="font-size:24px;font-weight:bold">${hours.length}</span> 
+                          <br/> crashes occurred near this post on the ${properties["STREET NAME 1"]} and ${properties["STREET NAME 2"]} intersection
+                        </div>
+                        <div class="barChart"></div>`;
 
         const popup = new mapboxgl.Popup({
-          offset: [0, -110],
+          offset: [0,-30],
+          anchor: 'bottom-left',
           closeButton: false,
           closeOnClick: true,
         });
 
-        let clickedCoordinates = e.features[0].geometry.coordinates;
-        let content = `<div class=content style="margin:10px 0 10px 5px; font-size:13px; text-align: start"> <span style="font-size:24px;font-weight:bold">${hours.length}</span> <br/> crashes near the guard positioned at the ${e.features[0].properties["STREET NAME 1"]} and ${e.features[0].properties["STREET NAME 2"]} intersection </div>
-            <div class=barChart></div>`;
-
         popup.setLngLat(clickedCoordinates).setHTML(content).addTo(m);
 
-        let bufferPoint = clickedCoordinates;
-        const buffered = turf.buffer(turf.point(bufferPoint), 80, {
-          units: "meters",
+        //add buffer around area
+        const bufferedPoint = turf.buffer(turf.point(clickedCoordinates), 80, {
+          units: "meters"
         });
+
         m.getSource("buffer").setData({
           type: "FeatureCollection",
-          features: [buffered],
+          features: [bufferedPoint],
         });
 
-        const width = 200;
-        const height = 150;
 
-        let svg = d3
+        //create chart for popup
+        const width = 200,
+          height = 150,
+          margin = 15
+
+
+        const svg = d3
           .select(".barChart")
           .append("svg")
-          .attr("width", width + 15)
-          .attr("height", height + 15);
+          .attr("width", width + margin)
+          .attr("height", height + margin);
 
         const x = d3
           .scaleBand()
@@ -265,8 +296,8 @@ const Map = () => {
             d.time === "morning"
               ? "#ffd4d2"
               : d.time === "afternoon"
-              ? "#ff727c"
-              : "#e5e5e5"
+                ? "#ff727c"
+                : "#e5e5e5"
           );
 
         svg
@@ -279,23 +310,7 @@ const Map = () => {
           .text((d) => d.count)
           .style("fill", "white");
 
-        // m.removeLayer("schools")
-        // m.removeSource("guards")
-        // m.removeSource("crashes")
       });
-
-      function getCrashesWithin500ft(crossingFeature, crashesFC) {
-        const buffered = turf.buffer(
-          turf.point(crossingFeature.coordinates),
-          80,
-          {
-            units: "meters",
-          }
-        );
-        return crashesFC.filter((feature) => {
-          return turf.booleanIntersects(buffered, feature);
-        });
-      }
     });
 
     //deconstruction
@@ -304,7 +319,7 @@ const Map = () => {
     };
   }, []);
 
-  return <div className="fixed w-[100vw] h-[100vh] " ref={mapContainer}></div>;
+  return <div className="fixed w-[100vw] h-[100vh]" ref={mapContainer}></div>;
 };
 
 export default Map;

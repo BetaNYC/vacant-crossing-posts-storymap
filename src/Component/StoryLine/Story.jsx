@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Scrollama, Step } from "react-scrollama";
 import { MapContext } from "../../App";
+import "./Story.css";
 
 import Introduction from "./Introduction";
 import Importance from "./Importance";
@@ -46,7 +47,7 @@ const Story = () => {
     };
 
     return (
-      <div className="absolute left-[0px] top-0 px-[18px] text-white  z-2">
+      <div className="absolute left-[0px] top-0 px-[18px] text-white z-2">
         <Scrollama offset={0.5} onStepEnter={onStepEnter}>
           <Step data={1}>
             <div>
