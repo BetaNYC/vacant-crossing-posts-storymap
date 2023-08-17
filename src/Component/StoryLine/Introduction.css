@@ -1,0 +1,10 @@
+@keyframes shake {
+    0% { transform: translate(1px, 0px) rotate(0deg); }
+    50% { transform: translate(0px, 0px) rotate(0deg); }
+    100% { transform: translate(1px, 0px) rotate(0deg); }
+}
+
+#scroll-down{
+    animation: shake 0.4s;
+    animation-iteration-count: 1;
+  }

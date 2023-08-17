@@ -1,4 +1,4 @@
-import React from "react";
+import './Introduction.css'
 
 const Introduction = () => {
   return (
@@ -12,7 +12,7 @@ const Introduction = () => {
           (morning) drop off and (afternoon) pick up.{" "}
         </p>
       </div>
-      <div className="flex flex-row justify-center mt-10">
+      <div className="flex flex-row justify-center mt-10" id="scroll-down">
         <div className="flex flex-col items-center m-auto">
           <div className="w-[10px] h-[10px] bg-[rgba(0,0,0,0)] border-l-[1.5px] border-b-[1.5px] rotate-[-45deg]"></div>
           <div className="w-[10px] h-[10px] bg-[rgba(0,0,0,0)] border-l-[1.5px] border-b-[1.5px] rotate-[-45deg]"></div>
