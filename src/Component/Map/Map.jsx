@@ -15,13 +15,9 @@ import handFilled from "../../icons/hand_filled.png";
 import { getStackCrashes } from "./getStackCrashes";
 
 function getCrashesWithinMeters(crossingFeature, crashesFC, meter = 80) {
-  const buffered = turf.buffer(
-    turf.point(crossingFeature.coordinates),
-    meter,
-    {
-      units: "meters",
-    }
-  );
+  const buffered = turf.buffer(turf.point(crossingFeature.coordinates), meter, {
+    units: "meters",
+  });
   return crashesFC.filter((feature) => {
     return turf.booleanIntersects(buffered, feature);
   });
@@ -95,7 +91,6 @@ const Map = () => {
         },
       });
 
-
       m.loadImage(handEmpty, (error, image) => {
         if (error) throw error;
         m.addImage("icon_hand", image, {
@@ -164,7 +159,6 @@ const Map = () => {
         },
       });
 
-
       m.addLayer({
         id: "outline",
         type: "line",
@@ -180,10 +174,8 @@ const Map = () => {
       });
 
       m.on("click", "guards", (e) => {
-
-
         const { geometry, properties } = e.features[0];
-        let { coordinates } = geometry
+        let { coordinates } = geometry;
 
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
@@ -196,31 +188,53 @@ const Map = () => {
 
         // get count of crashes for morning and afternoon
         // TODO - Refactor to a reduce function
-        const hours = [];
+        // const hours = [];
 
-        crashes.forEach((c) => hours.push(c.properties.hour));
+        // crashes.forEach((c) => hours.push(c.properties.hour));
 
-        let data = [
-          { time: "morning", count: 0 },
-          { time: "afternoon", count: 0 },
-        ];
+        // let data = [
+        //   { time: "morning", count: 0 },
+        //   { time: "afternoon", count: 0 },
+        // ];
 
-        hours.forEach((h) => {
-          h >= 7 && h <= 10 ? data[0].count++ : data[1].count++;
-        });
+        // hours.forEach((h) => {
+        //   h >= 7 && h <= 10 ? data[0].count++ : data[1].count++;
+        // });
+
+        const data = crashes.reduce((data, crash) => {
+          if (data.length === 0) {
+            data = [
+              { time: "morning", count: 0 },
+              { time: "afternoon", count: 0 },
+            ];
+          }
+          crash.properties.hour >= 7 && crash.properties.hour <= 10
+            ? data[0].count++
+            : data[1].count++;
+
+          return data;
+        }, []);
 
         let clickedCoordinates = coordinates.slice();
-        console.log(properties)
+        console.log(properties);
         let content = `<div class="content">
-                          <h4>Post ${properties['POST #']} is ${properties['LAST NAME'] === 'VACANT'? '<span class="vacant">Vacant</span>' : 'Staffed'}</h4>
-                          <span style="font-size:24px;font-weight:bold">${hours.length}</span> 
-                          <br/> crashes occurred near this post on the ${properties["STREET NAME 1"]} and ${properties["STREET NAME 2"]} intersection
+                          <h4>Post ${properties["POST #"]} is ${
+          properties["LAST NAME"] === "VACANT"
+            ? '<span class="vacant">Vacant</span>'
+            : "Staffed"
+        }</h4>
+                          <span style="font-size:24px;font-weight:bold">${
+                            crashes.length === 0 ? 0 : data[0].count + data[1].count
+                          }</span> 
+                          <br/> crashes occurred near this post on the ${
+                            properties["STREET NAME 1"]
+                          } and ${properties["STREET NAME 2"]} intersection
                         </div>
                         <div class="barChart"></div>`;
 
         const popup = new mapboxgl.Popup({
-          offset: [0,-30],
-          anchor: 'bottom-left',
+          offset: [0, -30],
+          anchor: "bottom-left",
           closeButton: false,
           closeOnClick: true,
         });
@@ -229,7 +243,7 @@ const Map = () => {
 
         //add buffer around area
         const bufferedPoint = turf.buffer(turf.point(clickedCoordinates), 80, {
-          units: "meters"
+          units: "meters",
         });
 
         m.getSource("buffer").setData({
@@ -237,12 +251,10 @@ const Map = () => {
           features: [bufferedPoint],
         });
 
-
         //create chart for popup
         const width = 200,
           height = 150,
-          margin = 15
-
+          margin = 15;
 
         const svg = d3
           .select(".barChart")
@@ -278,8 +290,8 @@ const Map = () => {
             d.time === "morning"
               ? "#ffd4d2"
               : d.time === "afternoon"
-                ? "#ff727c"
-                : "#e5e5e5"
+              ? "#ff727c"
+              : "#e5e5e5"
           );
 
         svg
@@ -291,7 +303,6 @@ const Map = () => {
           .attr("y", (d) => y(d.count) - 4)
           .text((d) => d.count)
           .style("fill", "white");
-
       });
     });
 

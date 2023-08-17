@@ -12,12 +12,12 @@ const Introduction = () => {
           (morning) drop off and (afternoon) pick up.{" "}
         </p>
       </div>
-      <div className="flex flex-row justify-center mt-10" id="scroll-down">
-        <div className="flex flex-col items-center m-auto">
+      <div className="flex flex-row justify-start mt-10" id="scroll-down">
+        <div className="flex flex-col  m-auto">
           <div className="w-[10px] h-[10px] bg-[rgba(0,0,0,0)] border-l-[1.5px] border-b-[1.5px] rotate-[-45deg]"></div>
           <div className="w-[10px] h-[10px] bg-[rgba(0,0,0,0)] border-l-[1.5px] border-b-[1.5px] rotate-[-45deg]"></div>
         </div>
-        <p className="ml-2 text-sm align-top"><span className="font-bold">SCROLL DOWN</span> to check the related data and how crossing guards can protect.</p>
+        <p className="ml-2 text-sm align-top"><span className="font-bold text-[#fdeca6]">SCROLL DOWN</span> to check the related data and how crossing guards can protect.</p>
       </div>
     </div>
   );
