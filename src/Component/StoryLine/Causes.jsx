@@ -1,31 +1,19 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import * as d3 from "d3";
 
 const Causes = () => {
-  //   const ref = useRef(null);
-
-  //   useEffect(() => {
-  //     const svg = d3.select(ref.current);
-  //     const height = ref.current.clientHeight;
-  //     const width = ref.current.clientWidth;
-
-  //   });
-
   return (
-    <div className="my-[calc(100vh)] p-[25px] max-w-[400px] bg-[rgba(0,0,0,0.5)]">
+    <div className="my-[calc(100vh)] p-[25px] max-w-[400px] bg-[rgba(0,0,0,0.8)]">
       <div className="font-bold text-[20px]">
         3. Click on crossing guards to view the crashes nearby
       </div>
       <div className="mt-[10px] text-[16px]">
-        <span>Since 2020 There were</span>
-        <span className="font-bold text-[18px]"> 51 </span>
-        crashes during <span className="font-bold text-[#ffd4d2]">
-          morning
-        </span>{" "}
-        and <span className="font-bold text-[#ff727c]">afternoon</span> at
-        locations where there are current vacancies. Filled the vacant positions
-        may decrease the possibility of crashes and protect students safety
-        during commuting.
+        Since 2020, there have been a total of 51 crashes in the&nbsp;
+        <span className="font-bold text-[#ffd4d2]">morning</span> and&nbsp;
+        <span className="font-bold text-[#ff727c]">afternoon</span> at locations
+        where there are currently vacant positions. Filling these vacant
+        positions could potentially reduce the likelihood of crashes and enhance
+        student safety during their commutes.
       </div>
       <div className="flex items-center mt-[20px] w-[350px] h-[300px]">
         <div className="flex items-center">

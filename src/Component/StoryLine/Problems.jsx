@@ -1,6 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
+import handFilled from "../../icons/hand_filled.png";
+import handEmpty from "../../icons/hand_empty.png";
+
 const Problems = () => {
   const ref = useRef(null);
 
@@ -33,25 +36,39 @@ const Problems = () => {
       .attr("fill", (d) => color(d.data[1]))
       .attr("stroke", "black")
       .style("stroke-width", "0px")
-      .style("opacity", (d) => (d.data[1] === 19 ? 0.05 : 0.25))
+      .style("opacity", (d) => (d.data[1] === 19 ? 0 : 0.4))
       .attr("transform", `translate(${width / 2},${height / 2})`);
   });
 
   return (
-    <div className="my-[calc(100vh)] p-[25px] max-w-[400px] bg-[rgba(0,0,0,0.5)]">
+    <div className="my-[calc(100vh)] p-[25px] max-w-[400px] bg-[rgba(0,0,0,0.8)]">
       <div className="font-bold text-[20px]">2. Crossing Guards Shortage</div>
       <div className="mt-[10px] text-[16px]">
-        Crossing guards are crucial to keep passengers safe.
-        However, 18 intersections near schools have vacancies.{" "}
-        <span className="font-bold text-[#fdeca6]">Filled guards</span> only
-        account for{" "}
+        Crossing guards play a vital role in ensuring the safety of pedestrians,
+        especially near school zones. Unfortunately, there is a shortage of
+        crossing guards at 18 intersections adjacent to schools. Currently,
+        only&nbsp;
         <span className="font-bold text-[16px] text-[#fdeca6]">
           {((8 / 27) * 100).toFixed(0)}%{" "}
         </span>
-        of Total posts.
+        of the total available positions for guards have been successfully
+        filled.
       </div>
+      {/* <div className="flex">
+        <div className="flex items-center mt-[25px] gap-[12px]">
+          <img src={handFilled} className="w-[20px] h-[20px]"></img>
+          <div className="">Filled Guards</div>
+        </div>
+        <div className="flex items-center mt-[25px] gap-[12px]">
+          <img src={handEmpty} className="w-[40px] h-[20px] color-[#fdeca6]" />
+          <div >Empty Guards</div>
+        </div>
+      </div> */}
+
       <svg className="mt-[20px] w-[300px] h-[300px]" ref={ref}></svg>
-      <p className="my-4 text-sm">🖰 Click on a hand icon for more details at that intersection.</p>
+      <p className="my-4 text-sm">
+        🖰 Click on a hand icon for more details at that intersection.
+      </p>
     </div>
   );
 };

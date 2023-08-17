@@ -9,9 +9,8 @@ import "./Map.css";
 
 import crashes from "../../Data/Crashes_2020.geo.json";
 
-import square from "../../icons/square.png";
-import hand from "../../icons/hand.png";
-import handFilled from "../../icons/hand_filled_yellow.png";
+import handEmpty from "../../icons/hand_empty.png";
+import handFilled from "../../icons/hand_filled.png";
 
 import { getStackCrashes } from "./getStackCrashes";
 
@@ -96,14 +95,8 @@ const Map = () => {
         },
       });
 
-      m.loadImage(square, (error, image) => {
-        if (error) throw error;
-        m.addImage("icon_square", image, {
-          sdf: true,
-        });
-      });
 
-      m.loadImage(hand, (error, image) => {
+      m.loadImage(handEmpty, (error, image) => {
         if (error) throw error;
         m.addImage("icon_hand", image, {
           sdf: true,
@@ -171,17 +164,6 @@ const Map = () => {
         },
       });
 
-      // m.addLayer({
-      //   id: "school_area",
-      //   type: "fill",
-      //   source: "schools",
-      //   layout: {},
-      //   paint: {
-      //     "fill-color": "transparent",
-      //     "fill-opacity": 0,
-      //     "fill-outline-color": "#e5f2e5",
-      //   },
-      // });
 
       m.addLayer({
         id: "outline",
