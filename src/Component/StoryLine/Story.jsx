@@ -3,6 +3,8 @@ import { Scrollama, Step } from "react-scrollama";
 import { MapContext } from "../../App";
 import "./Story.css";
 
+import * as turf from "@turf/turf";
+
 import Introduction from "./Introduction";
 import Background from "./Background";
 import Importance from "./Importance";
@@ -11,15 +13,30 @@ import Causes from "./Causes";
 
 import guards from "../../Data/crossing_locations.geo.json";
 
+console.log(guards);
+
 const Story = () => {
   const { map, setMap, crashes } = useContext(MapContext);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
+
+  const bufferPoints = guards.features.reduce((bufferPoints, feature) => {
+    if (feature.properties["LAST NAME"] === "VACANT") {
+      bufferPoints.push(
+        turf.buffer(turf.point(feature.geometry.coordinates), 80, {
+          units: "meters",
+        })
+      );
+    }
+
+    return bufferPoints;
+  }, []);
+
+  console.log(bufferPoints);
 
   //wait for most layers to load
   if (map && map.getSource("guards")) {
     const onStepEnter = (data) => {
       setCurrentStepIndex(data);
-
       if (data.data === 3) {
         map.getSource("guards").setData(guards);
         map.setPaintProperty("guards", "icon-opacity", [
@@ -36,10 +53,8 @@ const Story = () => {
           0,
           0,
         ]);
-      }
-      if (data.data === 3) {
         map.flyTo({
-          center: [-73.927, 40.860],
+          center: [-73.927, 40.86],
           zoom: 14.5,
         });
       }
@@ -58,6 +73,44 @@ const Story = () => {
           1,
           0,
         ]);
+      }
+      if (data.data === 5) {
+        map.setPaintProperty("guards", "icon-opacity", [
+          "match",
+          ["get", "LAST NAME"],
+          "VACANT",
+          0,
+          0,
+        ]);
+
+        //   bufferPoints.forEach((b, i) => {
+        //     map.addSource(`vacant-buffer-${i}`, {
+        //       type: "geojson",
+        //       data: {
+        //         type: "FeatureCollection",
+        //         features: [bufferPoints[i]],
+        //       },
+        //     });
+        //     map.addLayer({
+        //       id: `vacant-outline-${i}`,
+        //       type: "line",
+        //       source: `vacant-buffer-${i}`,
+        //       layout: {
+        //         "line-cap": "round",
+        //       },
+        //       paint: {
+        //         "line-color": "#fdeca6",
+        //         "line-width": 3,
+        //         "line-dasharray": [0, 2],
+        //       },
+        //     });
+        //   });
+        // }
+        // if (data.data !== 5 && map.getSource(`vacant-buffer-24`)) {
+        //   bufferPoints.forEach((b, i) => {
+        //     map.removeSource(`vacant-buffer-${i}`);
+        //     map.removeLayer(`vacant-outline-${i}`);
+        //   });
       }
     };
 

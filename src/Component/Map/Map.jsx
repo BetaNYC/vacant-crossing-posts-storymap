@@ -10,7 +10,7 @@ import "./Map.css";
 import crashes from "../../data/crashes_from_2020.geo.json";
 import csv from "../../data/crashes_from_2020.csv?url";
 
-import handEmpty from "../../icons/hand_empty.png";
+import handEmpty from "../../icons/hand.png";
 import handFilled from "../../icons/hand_filled.png";
 
 import { getStackCrashes } from "./getStackCrashes";
@@ -74,7 +74,7 @@ const Map = () => {
           +d.geometry.coordinates[0] !== undefined &&
           +d.geometry.coordinates[1] > 40.8491885183316
       );
-      console.log(crash_features);
+
       setCrashes(crash_features);
 
       const stackedCrashes = getStackCrashes(crash_features);
@@ -102,6 +102,8 @@ const Map = () => {
           features: [],
         },
       });
+
+
 
       m.loadImage(handEmpty, (error, image) => {
         if (error) throw error;
@@ -258,8 +260,6 @@ const Map = () => {
         const bufferedPoint = turf.buffer(turf.point(clickedCoordinates), 80, {
           units: "meters",
         });
-
-        console.log(bufferedPoint);
 
         m.getSource("buffer").setData({
           type: "FeatureCollection",
