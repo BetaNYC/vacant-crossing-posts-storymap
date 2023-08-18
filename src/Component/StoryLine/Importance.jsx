@@ -8,12 +8,12 @@ const Importance = () => {
       </div>
       <div className="mt-[15px] text-[16px]">
         <p>
-          Crossing guards play a pivotal role in reducing the risk of traffic
+          Crossing guards play a vital role in reducing the risk of traffic
           accidents involving children, particularly in guiding individuals away
           from harm's way and preventing students as they navigate busy streets.
         </p>
         <p className="mt-[10px]">
-          There are 26 crossing guards positions in the Washington Heights North
+          There are <span className="font-bold text-[#fdeca6]">26</span>  crossing guards positions in the Washington Heights North
           and Marble Hill-Inwood neighborhoods. The working shifts are 7AM to 10AM and 1PM to 4PM 
         </p>
       </div>

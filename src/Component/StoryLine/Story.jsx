@@ -10,28 +10,13 @@ import Background from "./Background";
 import Importance from "./Importance";
 import Problems from "./Problems";
 import Causes from "./Causes";
+import Credit from "./Credit";
 
 import guards from "../../Data/crossing_locations.geo.json";
 
-console.log(guards);
-
 const Story = () => {
-  const { map, setMap, crashes } = useContext(MapContext);
+  const { map } = useContext(MapContext);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
-
-  const bufferPoints = guards.features.reduce((bufferPoints, feature) => {
-    if (feature.properties["LAST NAME"] === "VACANT") {
-      bufferPoints.push(
-        turf.buffer(turf.point(feature.geometry.coordinates), 80, {
-          units: "meters",
-        })
-      );
-    }
-
-    return bufferPoints;
-  }, []);
-
-  console.log(bufferPoints);
 
   //wait for most layers to load
   if (map && map.getSource("guards")) {
@@ -82,35 +67,6 @@ const Story = () => {
           0,
           0,
         ]);
-
-        //   bufferPoints.forEach((b, i) => {
-        //     map.addSource(`vacant-buffer-${i}`, {
-        //       type: "geojson",
-        //       data: {
-        //         type: "FeatureCollection",
-        //         features: [bufferPoints[i]],
-        //       },
-        //     });
-        //     map.addLayer({
-        //       id: `vacant-outline-${i}`,
-        //       type: "line",
-        //       source: `vacant-buffer-${i}`,
-        //       layout: {
-        //         "line-cap": "round",
-        //       },
-        //       paint: {
-        //         "line-color": "#fdeca6",
-        //         "line-width": 3,
-        //         "line-dasharray": [0, 2],
-        //       },
-        //     });
-        //   });
-        // }
-        // if (data.data !== 5 && map.getSource(`vacant-buffer-24`)) {
-        //   bufferPoints.forEach((b, i) => {
-        //     map.removeSource(`vacant-buffer-${i}`);
-        //     map.removeLayer(`vacant-outline-${i}`);
-        //   });
       }
     };
 
@@ -141,6 +97,9 @@ const Story = () => {
             <div>
               <Causes />
             </div>
+          </Step>
+          <Step data={6}>
+            <Credit />
           </Step>
         </Scrollama>
       </div>

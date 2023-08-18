@@ -8,13 +8,13 @@ import * as turf from "@turf/turf";
 import "./Map.css";
 
 import crashes from "../../data/crashes_from_2020.geo.json";
-import csv from "../../data/crashes_from_2020.csv?url";
+
 
 import handEmpty from "../../icons/hand.png";
 import handFilled from "../../icons/hand_filled.png";
 
 import { getStackCrashes } from "./getStackCrashes";
-import { getStackCrashesCsv } from "./getStackCrashesCsv";
+
 
 function getCrashesWithinMeters(crossingFeature, crashesFC, meter = 80) {
   const buffered = turf.buffer(turf.point(crossingFeature.coordinates), meter, {
@@ -56,15 +56,8 @@ const Map = () => {
     });
 
     m.on("load", async () => {
-      // const crashesCsv = await d3.csv(csv);
 
-      // crashesCsv.forEach(c => {
-      //   c.hour = +c.hour
-      //   c.LATITUDE = +c.LATITUDE
-      //   c.LONGITUDE = +c.LONGITUDE
-      // })
-      // getStackCrashesCsv(crashesCsv)
-      // console.log(crashesCsv)
+      
       const crash_features = crashes.features.filter(
         (d) =>
           +d.properties.hour > 7 &&
@@ -201,33 +194,19 @@ const Map = () => {
         const crashes = getCrashesWithinMeters(geometry, crash_features, 80);
 
         // get count of crashes for morning and afternoon
-        // TODO - Refactor to a reduce function
-        // const hours = [];
-
-        // crashes.forEach((c) => hours.push(c.properties.hour));
-
-        // let data = [
-        //   { time: "morning", count: 0 },
-        //   { time: "afternoon", count: 0 },
-        // ];
-
-        // hours.forEach((h) => {
-        //   h >= 7 && h <= 10 ? data[0].count++ : data[1].count++;
-        // });
-
         const data = crashes.reduce((data, crash) => {
-          if (data.length === 0) {
-            data = [
-              { time: "morning", count: 0 },
-              { time: "afternoon", count: 0 },
-            ];
+          if(crash.properties.hour >= 7 && crash.properties.hour <= 10){
+            //increase count for morning
+            data[0].count++
+          }else{
+            //other increase count for afternoon
+            data[1].count++;
           }
-          crash.properties.hour >= 7 && crash.properties.hour <= 10
-            ? data[0].count++
-            : data[1].count++;
-
           return data;
-        }, []);
+        }, [
+          { time: "morning", count: 0 },
+          { time: "afternoon", count: 0 },
+        ]);
 
         let clickedCoordinates = coordinates.slice();
         let content = `<div class="content">

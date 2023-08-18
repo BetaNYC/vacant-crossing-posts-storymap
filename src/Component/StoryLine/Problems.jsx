@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
-import handFilled from "../../icons/hand_filled.png";
-import handEmpty from "../../icons/hand_empty.png";
+
 
 const Problems = () => {
   const ref = useRef(null);
