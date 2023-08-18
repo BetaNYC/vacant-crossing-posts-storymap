@@ -7,12 +7,15 @@ import * as turf from "@turf/turf";
 
 import "./Map.css";
 
-import crashes from "../../Data/crashes_2020.geo.json";
+import crashes from "../../data/crashes_from_2020.geo.json";
+import csv from "../../data/crashes_from_2020.csv?url";
 
 import handEmpty from "../../icons/hand_empty.png";
 import handFilled from "../../icons/hand_filled.png";
 
 import { getStackCrashes } from "./getStackCrashes";
+import { getStackCrashesCsv } from "./getStackCrashesCsv";
+
 
 function getCrashesWithinMeters(crossingFeature, crashesFC, meter = 80) {
   const buffered = turf.buffer(turf.point(crossingFeature.coordinates), meter, {
@@ -54,15 +57,25 @@ const Map = () => {
     });
 
     m.on("load", async () => {
+      // const crashesCsv = await d3.csv(csv);
+
+      // crashesCsv.forEach(c => {
+      //   c.hour = +c.hour
+      //   c.LATITUDE = +c.LATITUDE
+      //   c.LONGITUDE = +c.LONGITUDE
+      // })
+      // getStackCrashesCsv(crashesCsv)
+      // console.log(crashesCsv)
       const crash_features = crashes.features.filter(
         (d) =>
-          d.properties.hour > 7 &&
-          d.properties.hour < 16 &&
-          d.properties.hour !== 11 &&
-          d.properties.hour !== 12 &&
-          d.geometry.coordinates[0] !== undefined &&
-          d.geometry.coordinates[1] > 40.8491885183316
+          +d.properties.hour > 7 &&
+          +d.properties.hour < 16 &&
+          +d.properties.hour !== 11 &&
+          +d.properties.hour !== 12 &&
+          +d.geometry.coordinates[0] !== undefined &&
+          +d.geometry.coordinates[1] > 40.8491885183316
       );
+      console.log(crash_features)
       setCrashes(crash_features);
 
       const stackedCrashes = getStackCrashes(crash_features);
@@ -223,7 +236,9 @@ const Map = () => {
             : "Staffed"
         }</h4>
                           <span style="font-size:24px;font-weight:bold">${
-                            crashes.length === 0 ? 0 : data[0].count + data[1].count
+                            crashes.length === 0
+                              ? 0
+                              : data[0].count + data[1].count
                           }</span> 
                           <br/> crashes occurred near this post on the ${
                             properties["STREET NAME 1"]

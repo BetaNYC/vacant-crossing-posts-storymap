@@ -5,6 +5,7 @@ export function getStackCrashes(crash_features) {
       const key = feature.geometry.coordinates
         .map((i) => i.toFixed(5))
         .join(",");
+
       if (!(key in uniqueCoordinates)) {
         uniqueCoordinates[key] = [];
       }

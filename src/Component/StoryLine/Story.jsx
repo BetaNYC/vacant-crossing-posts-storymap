@@ -19,7 +19,7 @@ const Story = () => {
     const onStepEnter = (data) => {
       setCurrentStepIndex(data);
 
-      if (data.data > 1) {
+      if (data.data > 2) {
         map.getSource("guards").setData(guards);
         map.setPaintProperty("guards_vacant", "icon-opacity", [
           "match",
@@ -29,7 +29,7 @@ const Story = () => {
           0,
         ]);
       }
-      if (data.data > 2) {
+      if (data.data > 3) {
         map.setPaintProperty("guards", "icon-opacity", [
           "match",
           ["get", "LAST NAME"],
@@ -38,7 +38,7 @@ const Story = () => {
           1,
         ]);
       }
-      if (data.data === 3) {
+      if (data.data === 4) {
         map.flyTo({
           center: [-73.927, 40.862],
           zoom: 14,
@@ -61,10 +61,15 @@ const Story = () => {
           </Step>
           <Step data={3}>
             <div>
-              <Problems />
+              <Importance />
             </div>
           </Step>
           <Step data={4}>
+            <div>
+              <Problems />
+            </div>
+          </Step>
+          <Step data={5}>
             <div>
               <Causes />
             </div>

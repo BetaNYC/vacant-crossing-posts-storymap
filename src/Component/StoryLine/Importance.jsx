@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as d3 from "d3";
 
-import crashes from "../../data/crashes_2020.geo.json";
+import crashes from "../../data/crashes_from_2020.geo.json";
 
 const Importance = () => {
   const ref = useRef(null);
@@ -15,6 +15,7 @@ const Importance = () => {
         d.geometry.coordinates[0] !== undefined &&
         d.geometry.coordinates[1] > 40.8491885183316
     );
+    console.log(features.length)
 
     // creates an array of objects that has the count of crashes during that hour
     const hourData = [...Array(24).keys()].map((hour) => {
@@ -23,6 +24,7 @@ const Importance = () => {
         value: features.filter((d) => d.properties.hour === hour).length,
       };
     });
+
 
     let svg = d3
       .select(ref.current)
@@ -69,7 +71,6 @@ const Importance = () => {
           : 0.05
       );
 
-      console.log(hourData)
       
 
   });
@@ -83,7 +84,7 @@ const Importance = () => {
         <p>
           Students are facing significant risks during their commutes.&nbsp;
           <span className="font-bold text-[18px]">
-            {((220 / 625) * 100).toFixed(0)}%
+            {(((197 + 316) / 1442) * 100).toFixed(0)}%
           </span>{" "}
           crashes occur during school drop off and pick times.{" "}
         </p>
