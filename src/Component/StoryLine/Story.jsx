@@ -99,7 +99,9 @@ const Story = () => {
             </div>
           </Step>
           <Step data={6}>
-            <Credit />
+            <div>
+              <Credit />
+            </div>
           </Step>
         </Scrollama>
       </div>
