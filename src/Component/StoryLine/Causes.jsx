@@ -5,9 +5,9 @@ const Causes = () => {
   return (
     <div className="my-[calc(100vh)] p-[25px] max-w-[400px] bg-[rgba(0,0,0,0.8)]">
       <div className="font-bold text-[20px]">
-        3. Click on crossing guards to view the crashes nearby
+        4. The Crashes Vacant Crossing Guards Might Solve
       </div>
-      <div className="mt-[10px] text-[16px]">
+      <div className="mt-[15px] text-[16px]">
         Since 2020, there have been a total of 51 crashes in the&nbsp;
         <span className="font-bold text-[#ffd4d2]">morning</span> and&nbsp;
         <span className="font-bold text-[#ff727c]">afternoon</span> at locations

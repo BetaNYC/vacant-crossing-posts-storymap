@@ -4,6 +4,7 @@ import { MapContext } from "../../App";
 import "./Story.css";
 
 import Introduction from "./Introduction";
+import Background from "./Background";
 import Importance from "./Importance";
 import Problems from "./Problems";
 import Causes from "./Causes";
@@ -19,15 +20,28 @@ const Story = () => {
     const onStepEnter = (data) => {
       setCurrentStepIndex(data);
 
-      if (data.data > 2) {
+      if (data.data === 3) {
         map.getSource("guards").setData(guards);
-        map.setPaintProperty("guards_vacant", "icon-opacity", [
+        map.setPaintProperty("guards", "icon-opacity", [
           "match",
           ["get", "LAST NAME"],
           "VACANT",
           1,
+          1,
+        ]);
+        map.setPaintProperty("guards_vacant", "icon-opacity", [
+          "match",
+          ["get", "LAST NAME"],
+          "VACANT",
+          0,
           0,
         ]);
+      }
+      if (data.data === 3) {
+        map.flyTo({
+          center: [-73.927, 40.860],
+          zoom: 14.5,
+        });
       }
       if (data.data > 3) {
         map.setPaintProperty("guards", "icon-opacity", [
@@ -37,12 +51,13 @@ const Story = () => {
           0,
           1,
         ]);
-      }
-      if (data.data === 4) {
-        map.flyTo({
-          center: [-73.927, 40.862],
-          zoom: 14,
-        });
+        map.setPaintProperty("guards_vacant", "icon-opacity", [
+          "match",
+          ["get", "LAST NAME"],
+          "VACANT",
+          1,
+          0,
+        ]);
       }
     };
 
@@ -56,7 +71,7 @@ const Story = () => {
           </Step>
           <Step data={2}>
             <div>
-              <Importance />
+              <Background />
             </div>
           </Step>
           <Step data={3}>

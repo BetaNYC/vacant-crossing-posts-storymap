@@ -16,7 +16,6 @@ import handFilled from "../../icons/hand_filled.png";
 import { getStackCrashes } from "./getStackCrashes";
 import { getStackCrashesCsv } from "./getStackCrashesCsv";
 
-
 function getCrashesWithinMeters(crossingFeature, crashesFC, meter = 80) {
   const buffered = turf.buffer(turf.point(crossingFeature.coordinates), meter, {
     units: "meters",
@@ -75,7 +74,7 @@ const Map = () => {
           +d.geometry.coordinates[0] !== undefined &&
           +d.geometry.coordinates[1] > 40.8491885183316
       );
-      console.log(crash_features)
+      console.log(crash_features);
       setCrashes(crash_features);
 
       const stackedCrashes = getStackCrashes(crash_features);
@@ -122,7 +121,7 @@ const Map = () => {
         source: "guards",
         layout: {
           "icon-image": "icon_hand",
-          "icon-size": 0.07,
+          "icon-size": 0.072,
           "icon-allow-overlap": true,
         },
         paint: {
@@ -259,6 +258,8 @@ const Map = () => {
         const bufferedPoint = turf.buffer(turf.point(clickedCoordinates), 80, {
           units: "meters",
         });
+
+        console.log(bufferedPoint);
 
         m.getSource("buffer").setData({
           type: "FeatureCollection",
