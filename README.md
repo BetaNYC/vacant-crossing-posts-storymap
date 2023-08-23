@@ -5,7 +5,7 @@ This a story map on school crossing guards in upper Manhattan, that combines cra
 Building using React + Tailwindcss + MapboxGL + [React Scrollama](https://github.com/jsonkao/react-scrollama)
 
 ## Todos 
-- Remove PII data files and any git history of them. `git rm --cached *.csv && git rm --cached *.json && && git rm --cached *.geojson` 
+- Read [this page](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository) to remove all .csv, .ipynb, .geojson/.geo.json history from this repo. Alternatively delete .git and reupload the repo.
 - Create a better narrative with pictures and other research
 - Improvements to styling of the crash points (zoom based sizing?)
 - Pending data for the rest of Manhattan
