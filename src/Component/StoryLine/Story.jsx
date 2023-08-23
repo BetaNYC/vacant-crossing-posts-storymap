@@ -1,9 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Scrollama, Step } from "react-scrollama";
 import { MapContext } from "../../App";
 import "./Story.css";
-
-import * as turf from "@turf/turf";
 
 import Introduction from "./Introduction";
 import Background from "./Background";
@@ -12,18 +10,21 @@ import Problems from "./Problems";
 import Causes from "./Causes";
 import Credit from "./Credit";
 
-import guards from "../../Data/crossing_locations.geo.json";
-
 const Story = () => {
-  const { map } = useContext(MapContext);
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const { map, posts } = useContext(MapContext);
+  const [_currentStepIndex, setCurrentStepIndex] = useState(0);
 
-  //wait for most layers to load
-  if (map && map.getSource("guards")) {
-    const onStepEnter = (data) => {
+  if (map && posts.length && map.getSource("guards")) {
+    map.getSource("guards").setData({
+      "type": "FeatureCollection",
+      "features": posts
+    });
+
+    console.log(posts)
+
+    const onStepEnter = ({ data }) => {
       setCurrentStepIndex(data);
-      if (data.data === 3) {
-        map.getSource("guards").setData(guards);
+      if (data === 3) {
         map.setPaintProperty("guards", "icon-opacity", [
           "match",
           ["get", "LAST NAME"],
@@ -43,7 +44,7 @@ const Story = () => {
           zoom: 14.5,
         });
       }
-      if (data.data > 3) {
+      if (data > 3) {
         map.setPaintProperty("guards", "icon-opacity", [
           "match",
           ["get", "LAST NAME"],
@@ -59,7 +60,7 @@ const Story = () => {
           0,
         ]);
       }
-      if (data.data === 5) {
+      if (data === 5) {
         map.setPaintProperty("guards", "icon-opacity", [
           "match",
           ["get", "LAST NAME"],
