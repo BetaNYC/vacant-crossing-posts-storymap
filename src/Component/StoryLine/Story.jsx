@@ -20,8 +20,6 @@ const Story = () => {
       "features": posts
     });
 
-    console.log(posts)
-
     const onStepEnter = ({ data }) => {
       setCurrentStepIndex(data);
       if (data === 3) {
